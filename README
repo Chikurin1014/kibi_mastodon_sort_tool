@@ -1,1 +1,2 @@
 config.example.json をコピーして config.json にリネームしてください
+pythonを用いた、マストドンの特定のタグの投稿を、お気に入りが多い順orブーストが多い順に、top10のurlを出力してくれるツールです
