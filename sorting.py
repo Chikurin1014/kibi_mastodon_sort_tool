@@ -26,8 +26,11 @@ mastodon = Mastodon(
     api_base_url=API_BASE_URL
 )
 
-# ハッシュタグ付き投稿を取得（最大100件）
-toots = mastodon.timeline_hashtag(tag, limit=100)
+# ハッシュタグ付き投稿を取得
+# 一回のリクエストでは40件までしか取得できないため、paginationを用いる。
+toots = mastodon.fetch_remaining(
+    first_page=mastodon.timeline_hashtag(tag, limit=40)
+)
 
 # 投稿をソート
 sorted_toots = sorted(toots, key=lambda x: x[sort_key], reverse=True)
